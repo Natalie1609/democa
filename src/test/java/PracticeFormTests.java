@@ -38,11 +38,15 @@ public class PracticeFormTests {
         $("#subjectsInput").pressEnter();
 
         $("[for=hobbies-checkbox-2]").click();
-        $("#uploadPicture").uploadFile(new File("src/test/java/test.txt");
+      //  $("#uploadPicture").uploadFile(new File("src/test/java/Files/test.png");
         $("#currentAddress").setValue("SPB");
-//        $("#submit").click();
+        $("#state").click();
+        $("#state").setValue("H");
+        $("#state").pressTab();
 
-//        $(".modal-dialog modal-lg").shouldBe(Condition.visible);
+        $("#submit").click();
+
+        $(".modal-dialog modal-lg").shouldBe(Condition.visible);
 //        $().shouldHave(Text(""));
     }
 }
