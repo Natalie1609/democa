@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -44,9 +45,9 @@ public class PracticeFormTests {
         $("#uploadPicture").uploadFile(new File("src/test/Files/test.png"));
         $("#currentAddress").setValue("SPB");
         $("#state").click();
-        $("#stateCity-wrapper").$(new ByText("Uttar Pradesh")).click();
+        $("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
         $("#city").click();
-        $("#stateCity-wrapper").$(new ByText("Merrut")).click();
+        $("#stateCity-wrapper").$(byText("Merrut")).click();
         $("#submit").click();
 
         // Проверки
