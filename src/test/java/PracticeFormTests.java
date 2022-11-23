@@ -65,7 +65,6 @@ public class PracticeFormTests {
     }
     @AfterEach
     void afterEach() {
-        // open("google.com")
         System.out.println("Заполнение формы Practice form");
         System.out.println("Проверка данных из Practice form");
         System.out.println("Закрытие модального окна Thanks for submitting the form");
