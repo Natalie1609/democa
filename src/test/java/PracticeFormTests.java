@@ -13,7 +13,7 @@ public class PracticeFormTests {
     @BeforeAll
     static void beforeAll() {
         Configuration.holdBrowserOpen = true;
-        Configuration.browserSize = "7680x4320";
+        Configuration.browserSize = "1000x800";
         Configuration.baseUrl = "https://demoqa.com";
     }
     @Test
