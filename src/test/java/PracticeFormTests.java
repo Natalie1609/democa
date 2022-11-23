@@ -1,6 +1,7 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.selector.ByText;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -61,6 +62,13 @@ public class PracticeFormTests {
                 text("Uttar Pradesh Merrut")
         );
         $("#closeLargeModal").click();
+    }
+    @AfterEach
+    void afterEach() {
+        // open("google.com")
+        System.out.println("Заполнение формы Practice form");
+        System.out.println("Проверка данных из Practice form");
+        System.out.println("Закрытие модального окна Thanks for submitting the form");
     }
 }
 
