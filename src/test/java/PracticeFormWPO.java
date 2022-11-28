@@ -2,6 +2,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import pages.PracticeForm;
 
 import java.io.File;
 
@@ -20,48 +21,23 @@ public class PracticeFormWPO {
     }
     @Test
     void fillFormTest() {
-        open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        String firstname = "Natalie";
+        new PracticeForm().openPage();
 
-        $("#firstName").setValue("Natalie");
-        $("#lastName").setValue("Alexandrova");
-        $("#userEmail").setValue("123@gmail.com");
-        $("#gender-radio-2").doubleClick();
-        $("#userNumber").setValue("9556664433");
-//      Выбор днюхи:
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").click();
-        $(".react-datepicker__month-select").selectOption("September");
-        $(".react-datepicker__year-select").click();
-        $(".react-datepicker__year-select").selectOption("1995");
-        $(".react-datepicker__day--016").click();
-
-        $("#subjectsInput").click();
-        $("#subjectsInput").setValue("H");
-        $("#subjectsInput").pressEnter();
-
-        $("[for=hobbies-checkbox-2]").click();
-        $("#uploadPicture").uploadFile(new File("src/test/Files/test.png"));
-        $("#currentAddress").setValue("SPB");
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Merrut")).click();
-        $("#submit").click();
-
-        // Проверки
-        $(".modal-title").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(
-                text("Natalie Alexandrova"),
-                text("123@gmail.com"),
-                text("Female"), text("9556664433"),
-                text("16 September,1995"),
-                text("Reading"),
-                text("test.PNG"),
-                text("SPB"),
-                text("Uttar Pradesh Merrut")
-        );
-        $("#closeLargeModal").click();
+        new PracticeForm().setFirstName(firstname);
+        new PracticeForm().setLastName("Alexandrova");
+        new PracticeForm().setEmail("123@gmail.com");
+        new PracticeForm().setGender();
+        new PracticeForm().setNumber("9556664433");
+        new PracticeForm().setBirthday();
+        new PracticeForm().setSubjects();
+        new PracticeForm().setHobby();
+        new PracticeForm().setPicture();
+        new PracticeForm().setAddress("SPB");
+        new PracticeForm().setState("Uttar Pradesh");
+        new PracticeForm().setCity("Merrut");
+        new PracticeForm().setCheck();
+        new PracticeForm().setClose();
     }
     @AfterEach
     void afterEach() {
