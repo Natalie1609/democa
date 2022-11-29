@@ -10,6 +10,9 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class PracticeForm {
+    private final String TITLE_TEXT = "Student Registration Form";
+    private final String MONTH_TEXT = "September";
+    private final String YEAR_TEXT = "1995";
     private SelenideElement
         firstNameInput = $("#firstName"),
         lastNameInput = $("#lastName"),
@@ -20,59 +23,86 @@ public class PracticeForm {
         subjectsInput = $("#subjectsInput"),
         hobbyInput = $("[for=hobbies-checkbox-2]"),
         pictureInput = $("#uploadPicture"),
-        addressInput = $("#currentAddress");
+        addressInput = $("#currentAddress"),
+        closeInput = $("#closeLargeModal");
 
-    public void openPage() {
+    public PracticeForm openPage() {
         open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
+
+        return this;
     }
-    public void setFirstName(String value) {
+    public PracticeForm setFirstName(String value) {
         firstNameInput.setValue(value);
+
+        return this;
     }
-    public void setLastName(String value) {
+    public PracticeForm setLastName(String value) {
         lastNameInput.setValue(value);
+
+        return this;
     }
-    public void setEmail(String value) {
+    public PracticeForm setEmail(String value) {
         emailInput.setValue(value);
+
+        return this;
     }
-    public void setGender() {
+    public PracticeForm setGender() {
         genderInput.doubleClick();
+
+        return this;
     }
-    public void setNumber(String value) {
+    public PracticeForm setNumber(String value) {
         numberInput.setValue(value);
+
+        return this;
     }
-    public void setBirthday() {
+    public PracticeForm setBirthday() {
         birthdayInput.click();
         $(".react-datepicker__month-select").click();
-        $(".react-datepicker__month-select").selectOption("September");
+        $(".react-datepicker__month-select").selectOption(MONTH_TEXT);
         $(".react-datepicker__year-select").click();
-        $(".react-datepicker__year-select").selectOption("1995");
+        $(".react-datepicker__year-select").selectOption(YEAR_TEXT);
         $(".react-datepicker__day--016").click();
+
+        return this;
     }
-    public void setSubjects() {
+    public PracticeForm setSubjects() {
         subjectsInput.click();
         subjectsInput.setValue("H");
         subjectsInput.pressEnter();
+
+        return this;
     }
-    public void setHobby() {
+    public PracticeForm setHobby() {
         hobbyInput.click();
+
+        return this;
     }
-    public void setPicture() {
+    public PracticeForm setPicture() {
         pictureInput.uploadFile(new File("src/test/Files/test.png"));
+
+        return this;
     }
-    public void setAddress(String value) {
+    public PracticeForm setAddress(String value) {
         addressInput.setValue(value);
+
+        return this;
     }
-    public void setState(String value) {
+    public PracticeForm setState(String value) {
         $("#state").click();
         $("#stateCity-wrapper").$(byText(value)).click();
+
+        return this;
     }
-    public void setCity(String value) {
+    public PracticeForm setCity(String value) {
         $("#city").click();
         $("#stateCity-wrapper").$(byText(value)).click();
         $("#submit").click();
+
+        return this;
     }
-    public void setCheck() {
+    public PracticeForm setCheck() {
         $(".modal-title").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(
                 text("Natalie Alexandrova"),
@@ -84,9 +114,13 @@ public class PracticeForm {
                 text("SPB"),
                 text("Uttar Pradesh Merrut")
         );
+
+        return this;
     }
-    public void setClose() {
-        $("#closeLargeModal").click();
+    public PracticeForm setClose() {
+        closeInput.click();
+
+        return this;
     }
 
 }
