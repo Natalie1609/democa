@@ -1,6 +1,8 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import pages.components.CalendarComponents;
+import pages.components.ModalComponent;
 
 import java.io.File;
 
@@ -10,9 +12,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class PracticeForm {
+    CalendarComponents calendarComponents = new CalendarComponents();
     private final String TITLE_TEXT = "Student Registration Form";
-    private final String MONTH_TEXT = "September";
-    private final String YEAR_TEXT = "1995";
     private SelenideElement
         firstNameInput = $("#firstName"),
         lastNameInput = $("#lastName"),
@@ -57,13 +58,9 @@ public class PracticeForm {
 
         return this;
     }
-    public PracticeForm setBirthday() {
+    public PracticeForm setBirthday(String day, String month, String year) {
         birthdayInput.click();
-        $(".react-datepicker__month-select").click();
-        $(".react-datepicker__month-select").selectOption(MONTH_TEXT);
-        $(".react-datepicker__year-select").click();
-        $(".react-datepicker__year-select").selectOption(YEAR_TEXT);
-        $(".react-datepicker__day--016").click();
+        calendarComponents.setDate(day, month, year);
 
         return this;
     }
@@ -103,6 +100,7 @@ public class PracticeForm {
         return this;
     }
     public PracticeForm setCheck() {
+        ModalComponent modalComponent = new ModalComponent();
         $(".modal-title").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(
                 text("Natalie Alexandrova"),
@@ -115,6 +113,11 @@ public class PracticeForm {
                 text("Uttar Pradesh Merrut")
         );
 
+        return this;
+    }
+    public PracticeForm setModalComponent() {
+        ModalComponent modalComponent;
+        modalComponent.setModal();
         return this;
     }
     public PracticeForm setClose() {

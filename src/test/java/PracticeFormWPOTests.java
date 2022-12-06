@@ -11,7 +11,7 @@ public class PracticeFormWPOTests extends TestBase {
             .setEmail("123@gmail.com")
             .setGender()
             .setNumber("9556664433")
-            .setBirthday()
+            .setBirthday("16", "September", "1995")
             .setSubjects()
             .setHobby()
             .setPicture()
